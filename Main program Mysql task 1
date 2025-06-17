@@ -1,0 +1,27 @@
+create 3 tables and populate dataAdd commentMore actions
+CREATE TABLE Students (
+    StudentID INT,
+    Name VARCHAR(50)
+);
+
+CREATE TABLE Courses (
+    CourseID INT,
+    CourseName VARCHAR(50)
+);
+
+CREATE TABLE Enrollments (
+    StudentID INT,
+    CourseID INT
+);
+
+INSERT INTO Students VALUES
+(1, 'Alice'),
+(2, 'Bob');
+
+INSERT INTO Courses VALUES
+(101, 'Math'),
+(102, 'English');
+
+INSERT INTO Enrollments VALUES
+(1, 101),
+(2, 102);
