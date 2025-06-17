@@ -1,0 +1,189 @@
+ [FETCH STUDENT WITH>80]
+MySQL  localhost:3306 ssl  kgcas  SQL >create table StudentMarks(rollno int,name varchar(20),department varchar(20),marks int);
+Query OK, 0 rows affected (0.0753 sec)
+ MySQL  localhost:3306 ssl  kgcas  SQL > insert into StudentMarks values(111,'Darshana','CS',100),(222,'Janani','CS',90),(333,'Rudhra','CS',80),(444,'Rashmitha','CS',70),(555,'Harini','CS',60);
+Query OK, 5 rows affected (0.0472 sec)
+
+Records: 5  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  kgcas  SQL > select * from StudentMarks;
++--------+-----------+------------+-------+
+| rollno | name      | department | marks |
++--------+-----------+------------+-------+
+|    111 | Darshana  | CS         |   100 |
+|    222 | Janani    | CS         |    90 |
+|    333 | Rudhra    | CS         |    80 |
+|    444 | Rashmitha | CS         |    70 |
+|    555 | Harini    | CS         |    60 |
++--------+-----------+------------+-------+
+5 rows in set (0.0008 sec)
+ 
+ MySQL  localhost:3306 ssl  kgcas  SQL > select * from StudentMarks where marks>80;
++--------+----------+------------+-------+
+| rollno | name     | department | marks |
++--------+----------+------------+-------+
+|    111 | Darshana | CS         |   100 |
+|    222 | Janani   | CS         |    90 |
++--------+----------+------------+-------+
+2 rows in set (0.0012 sec)
+ 
+ 
+
+
+
+
+[LIST COURSES BY ASCENDING FEES]
+MySQL  localhost:3306 ssl  kgcas  SQL > alter table StudentMarks add fees int;
+Query OK, 0 rows affected (0.0621 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  kgcas  SQL > desc StudentMarks;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| rollno     | int         | YES  |     | NULL    |       |
+| name       | varchar(20) | YES  |     | NULL    |       |
+| department | varchar(20) | YES  |     | NULL    |       |
+| marks      | int         | YES  |     | NULL    |       |
+| fees       | int         | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+5 rows in set (0.0019 sec)
+ MySQL  localhost:3306 ssl  kgcas  SQL > update StudentMarks set fees=10000 where rollno=111;
+Query OK, 1 row affected (0.0443 sec)
+
+Rows matched: 1  Changed: 1  Warnings: 0
+ MySQL  localhost:3306 ssl  kgcas  SQL > update StudentMarks set fees=30000 where rollno=222;
+Query OK, 1 row affected (0.0058 sec)
+
+Rows matched: 1  Changed: 1  Warnings: 0
+ MySQL  localhost:3306 ssl  kgcas  SQL > update StudentMarks set fees=40000 where rollno=333;
+Query OK, 1 row affected (0.0457 sec)
+
+Rows matched: 1  Changed: 1  Warnings: 0
+ MySQL  localhost:3306 ssl  kgcas  SQL > update StudentMarks set fees=20000 where rollno=444;
+Query OK, 1 row affected (0.0103 sec)
+
+Rows matched: 1  Changed: 1  Warnings: 0
+ MySQL  localhost:3306 ssl  kgcas  SQL > update StudentMarks set fees=50000 where rollno=555;
+Query OK, 1 row affected (0.0446 sec)
+
+Rows matched: 1  Changed: 1  Warnings: 0
+ MySQL  localhost:3306 ssl  kgcas  SQL > select * from StudentMarks;
++--------+-----------+------------+-------+-------+
+| rollno | name      | department | marks | fees  |
++--------+-----------+------------+-------+-------+
+|    111 | Darshana  | CS         |   100 | 10000 |
+|    222 | Janani    | CS         |    90 | 30000 |
+|    333 | Rudhra    | CS         |    80 | 40000 |
+|    444 | Rashmitha | CS         |    70 | 20000 |
+|    555 | Harini    | CS         |    60 | 50000 |
++--------+-----------+------------+-------+-------+
+5 rows in set (0.0008 sec)
+ MySQL  localhost:3306 ssl  kgcas  SQL > select * from StudentMarks
+                                      -> order by fees;
++--------+-----------+------------+-------+-------+
+| rollno | name      | department | marks | fees  |
++--------+-----------+------------+-------+-------+
+|    111 | Darshana  | CS         |   100 | 10000 |
+|    444 | Rashmitha | CS         |    70 | 20000 |
+|    222 | Janani    | CS         |    90 | 30000 |
+|    333 | Rudhra    | CS         |    80 | 40000 |
+|    555 | Harini    | CS         |    60 | 50000 |
++--------+-----------+------------+-------+-------+
+5 rows in set (0.0009 sec)
+
+
+
+
+[SEARCH BOOKS BY KEYWORD USING LIKE]
+ MySQL  localhost:3306 ssl  kgcas  SQL > alter table StudentMarks add books varchar(10);
+Query OK, 0 rows affected (0.0659 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  kgcas  SQL > update StudentMarks set books='CS Book';
+Query OK, 5 rows affected (0.0447 sec)
+
+Rows matched: 5  Changed: 5  Warnings: 0
+ MySQL  localhost:3306 ssl  kgcas  SQL > update StudentMarks set books='CS Book' where rollno=111;
+Query OK, 0 rows affected (0.0008 sec)
+
+Rows matched: 1  Changed: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  kgcas  SQL > update StudentMarks set books='JAVA Book' where rollno=222;
+Query OK, 1 row affected (0.0451 sec)
+
+Rows matched: 1  Changed: 1  Warnings: 0
+ MySQL  localhost:3306 ssl  kgcas  SQL > update StudentMarks set books='C Book' where rollno=333;
+Query OK, 1 row affected (0.0450 sec)
+
+Rows matched: 1  Changed: 1  Warnings: 0
+ MySQL  localhost:3306 ssl  kgcas  SQL > update StudentMarks set books='C++ Book' where rollno=444;
+Query OK, 1 row affected (0.0439 sec)
+
+Rows matched: 1  Changed: 1  Warnings: 0
+ MySQL  localhost:3306 ssl  kgcas  SQL > update StudentMarks set books='SQL Book' where rollno=555;
+Query OK, 1 row affected (0.0459 sec)
+
+Rows matched: 1  Changed: 1  Warnings: 0
+ MySQL  localhost:3306 ssl  kgcas  SQL > select * from StudentMarks;
++--------+-----------+------------+-------+-------+-----------+
+| rollno | name      | department | marks | fees  | books     |
++--------+-----------+------------+-------+-------+-----------+
+|    111 | Darshana  | CS         |   100 | 10000 | CS Book   |
+|    222 | Janani    | CS         |    90 | 30000 | JAVA Book |
+|    333 | Rudhra    | CS         |    80 | 40000 | C Book    |
+|    444 | Rashmitha | CS         |    70 | 20000 | C++ Book  |
+|    555 | Harini    | CS         |    60 | 50000 | SQL Book  |
++--------+-----------+------------+-------+-------+-----------+
+5 rows in set (0.0010 sec)
+ 
+ MySQL  localhost:3306 ssl  kgcas  SQL > select * from StudentMarks where books like 'C%';
++--------+-----------+------------+-------+-------+----------+
+| rollno | name      | department | marks | fees  | books    |
++--------+-----------+------------+-------+-------+----------+
+|    111 | Darshana  | CS         |   100 | 10000 | CS Book  |
+|    333 | Rudhra    | CS         |    80 | 40000 | C Book   |
+|    444 | Rashmitha | CS         |    70 | 20000 | C++ Book |
++--------+-----------+------------+-------+-------+----------+
+3 rows in set (0.0009 sec)
+
+
+
+
+[CUSTOMER RECORD FILTERING SYSTEM]
+ MySQL  localhost:3306 ssl  kgcas  SQL > create table Customer(customerid int,name varchar(10),city varchar(10),age int);
+Query OK, 0 rows affected (0.0675 sec)
+ MySQL  localhost:3306 ssl  kgcas  SQL > insert into Customer values(1,'Darshana','Chennai',19),(2,'Janani','Mumbai',20),(3,'Rudhra','Chennai',25),(4,'Rashmitha','Chennai',26),(5,'Harini','Mumbai',27);
+Query OK, 5 rows affected (0.0372 sec)
+
+Records: 5  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  kgcas  SQL > select * from Customer;
++------------+-----------+---------+-----+
+| customerid | name      | city    | age |
++------------+-----------+---------+-----+
+|          1 | Darshana  | Chennai |  19 |
+|          2 | Janani    | Mumbai  |  20 |
+|          3 | Rudhra    | Chennai |  25 |
+|          4 | Rashmitha | Chennai |  26 |
+|          5 | Harini    | Mumbai  |  27 |
++------------+-----------+---------+-----+
+5 rows in set (0.0008 sec)
+ 
+ MySQL  localhost:3306 ssl  kgcas  SQL > select * from Customer
+                                      -> where city='Chennai' AND age < 25;
++------------+----------+---------+-----+
+| customerid | name     | city    | age |
++------------+----------+---------+-----+
+|          1 | Darshana | Chennai |  19 |
++------------+----------+---------+-----+
+1 row in set (0.0009 sec)
+ MySQL  localhost:3306 ssl  kgcas  SQL > select * from Customer
+                                      -> where city IN('Chennai','Mumbai');
++------------+-----------+---------+-----+
+| customerid | name      | city    | age |
++------------+-----------+---------+-----+
+|          1 | Darshana  | Chennai |  19 |
+|          2 | Janani    | Mumbai  |  20 |
+|          3 | Rudhra    | Chennai |  25 |
+|          4 | Rashmitha | Chennai |  26 |
+|          5 | Harini    | Mumbai  |  27 |
++------------+-----------+---------+-----+
+5 rows in set (0.0009 sec)
