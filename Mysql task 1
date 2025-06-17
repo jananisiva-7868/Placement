@@ -1,0 +1,80 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| datas              |
+| information_schema |
+| mysql              |
+| performance_schema |
+| student            |
+| sys                |
+| test               |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql> use student;
+Database changed
+mysql> create table si;
+ERROR 4028 (HY000): A table must have at least one visible column.
+mysql> create table si(student varchar(20),course varchar(20));
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> insert into si values('anu','bca'),('rudhra','bsc'),('janani','bca'),('darshana','it'),('harini','ct');
+Query OK, 5 rows affected (0.04 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+
+
+CREATING 5 RECORS FOR EACH
+
+
+
+mysql> select * from si;
++----------+--------+
+| student  | course |
++----------+--------+
+| anu      | bca    |
+| rudhra   | bsc    |
+| janani   | bca    |
+| darshana | it     |
+| harini   | ct     |
++----------+--------+
+5 rows in set (0.00 sec)
+
+
+
+UPDATE COLUMN
+
+
+
+mysql> update si set course_fee='2000' where student='rudhra';
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update si set course_fee='5000' where student='anu';
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update si set course_fee='3000' where student='janani';
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update si set course_fee='1000' where student='darshana';
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update si set course_fee='4000' where student='harini';
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from si;
++----------+--------+------------+
+| student  | course | course_fee |
++----------+--------+------------+
+| anu      | bca    | 5000       |
+| rudhra   | bsc    | 2000       |
+| janani   | bca    | 3000       |
+| darshana | it     | 1000       |
+| harini   | ct     | 4000       |
++----------+--------+------------+
+5 rows in set (0.00 sec)
